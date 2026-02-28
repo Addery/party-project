@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活动报名接口测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f8f9fa;
+        }
+        .success {
+            border-color: #28a745;
+            background-color: #d4edda;
+        }
+        .error {
+            border-color: #dc3545;
+            background-color: #f8d7da;
+        }
+    </style>
+</head>
+<body>
+    <h1>活动报名接口测试</h1>
+    
+    <form id="registerForm">
+        <div class="form-group">
+            <label for="activityId">活动ID:</label>
+            <input type="number" id="activityId" name="activityId" value="13" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="userId">用户ID:</label>
+            <input type="number" id="userId" name="userId" value="1" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="name">姓名:</label>
+            <input type="text" id="name" name="name" value="测试用户" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">手机号码:</label>
+            <input type="tel" id="phone" name="phone" value="13800138000" required>
+        </div>
+        
+        <button type="submit">提交报名</button>
+    </form>
+    
+    <div id="result"></div>
+    
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const activityId = document.getElementById('activityId').value;
+            const userId = document.getElementById('userId').value;
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            
+            const url = `http://localhost:8080/api/activities/${activityId}/register`;
+            const requestBody = {
+                userId: parseInt(userId),
+                name: name,
+                phone: phone
+            };
+            
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            })
+            .then(response => {
+                return response.json().then(data => {
+                    return { status: response.status, data: data };
+                });
+            })
+            .then(result => {
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = `
+                    <h3>响应结果:</h3>
+                    <p>状态码: ${result.status}</p>
+                    <p>响应内容:</p>
+                    <pre>${JSON.stringify(result.data, null, 2)}</pre>
+                `;
+                
+                if (result.status === 200) {
+                    resultDiv.className = 'success';
+                } else {
+                    resultDiv.className = 'error';
+                }
+            })
+            .catch(error => {
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = `
+                    <h3>请求失败:</h3>
+                    <p>错误信息: ${error.message}</p>
+                `;
+                resultDiv.className = 'error';
+            });
+        });
+    </script>
+</body>
+</html>

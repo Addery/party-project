@@ -1,0 +1,58 @@
+# Set MySQL connection information
+$mysqlHost = 'localhost'
+$mysqlUser = 'root'
+$mysqlPassword = '123456'
+$mysqlDatabase = 'party_management_system'
+
+# Create SQL content with Chinese data
+$sqlContent = @'
+DELETE FROM attachments WHERE type = "notice";
+DELETE FROM notices;
+ALTER TABLE notices AUTO_INCREMENT = 1;
+ALTER TABLE attachments AUTO_INCREMENT = 1;
+
+INSERT INTO notices (title, author, department, publish_date, category, summary, content) VALUES
+("关于召开2025年党委扩大会议的通知", "张书记", "党委办公室", "2025-11-15 00:00:00", "党委通知", "讨论2025年工作规划", "会议将讨论2025年的工作规划和重点任务，各部门负责人需准时参加。"),
+("2025年春季学期入党积极分子培训通知", "李主任", "组织部", "2025-11-20 00:00:00", "活动通知", "入党积极分子培训安排", "为加强入党积极分子的理论学习，提高政治素养，将于近期举办入党积极分子培训班。"),
+("关于开展2024年度工作总结的通知", "王部长", "行政部", "2025-11-25 00:00:00", "工作通知", "2024年度工作总结要求", "各部门需在12月10日前提交年度工作总结及下一年度工作计划。"),
+("2025年元旦放假通知", "赵秘书", "办公室", "2025-12-01 00:00:00", "放假通知", "2025年元旦放假安排", "根据国家规定，2025年元旦放假三天，具体安排如下：2025年1月1日至3日放假，共3天。"),
+("关于表彰2024年度优秀共产党员的决定", "张书记", "党委办公室", "2025-12-05 00:00:00", "表彰通知", "表彰2024年度优秀共产党员", "为表彰先进，树立榜样，经研究决定，授予以下同志'2024年度优秀共产党员'称号。"),
+("2025年党员民主评议工作通知", "李主任", "组织部", "2025-12-10 00:00:00", "工作通知", "党员民主评议工作安排", "根据党章规定，现将2025年党员民主评议工作安排如下，请各支部认真组织实施。"),
+("关于举办2025年春节联欢晚会的通知", "王部长", "宣传部", "2025-12-15 00:00:00", "活动通知", "春节联欢晚会筹备", "为丰富教职工业余文化生活，营造欢乐祥和的节日氛围，将于2025年1月25日举办春节联欢晚会。"),
+("2025年春季招生工作启动通知", "孙校长", "招生办", "2025-12-20 00:00:00", "招生通知", "2025年春季招生工作安排", "我校2025年春季招生工作即将启动，现将有关事项通知如下，请相关部门做好准备工作。");
+
+INSERT INTO attachments (related_id, file_name, file_path, file_size, type) VALUES
+(1, "党委扩大会议议程.pdf", "/attachments/20251115/agenda.pdf", 204800, "notice"),
+(1, "2025年工作规划草案.docx", "/attachments/20251115/plan.docx", 512000, "notice"),
+(2, "入党积极分子培训大纲.pdf", "/attachments/20251120/training.pdf", 153600, "notice"),
+(3, "年度工作总结模板.xlsx", "/attachments/20251125/template.xlsx", 102400, "notice"),
+(5, "优秀共产党员名单.pdf", "/attachments/20251205/list.pdf", 81920, "notice"),
+(6, "党员民主评议表.docx", "/attachments/20251210/form.docx", 122880, "notice"),
+(7, "春节联欢晚会节目单.pdf", "/attachments/20251215/program.pdf", 92160, "notice"),
+(8, "2025年春季招生简章.pdf", "/attachments/20251220/brochure.pdf", 256000, "notice");
+'@
+
+# Create a temporary UTF-8 encoded file
+$tempFile = New-TemporaryFile | Rename-Item -NewName { $_ -replace '\.tmp$', '.sql' } -PassThru
+Set-Content -Path $tempFile.FullName -Value $sqlContent -Encoding UTF8
+
+# Execute SQL script with proper encoding
+Write-Host "Executing SQL script with UTF-8 encoding..."
+Start-Process -FilePath "mysql" -ArgumentList "--default-character-set=utf8mb4 -h $mysqlHost -u $mysqlUser -p$mysqlPassword -D $mysqlDatabase -e 'source $($tempFile.FullName.Replace("\", "/"))'" -Wait -NoNewWindow
+
+# Check execution result
+if ($LASTEXITCODE -eq 0) {
+    Write-Host "SQL script executed successfully!"
+    
+    # Verify data insertion
+    Write-Host "\nVerifying notice data insertion:"
+    mysql --default-character-set=utf8mb4 -h $mysqlHost -u $mysqlUser -p$mysqlPassword -D $mysqlDatabase -e "SELECT id, title, category, publish_date FROM notices LIMIT 8"
+    
+    Write-Host "\nVerifying attachment data insertion:"
+    mysql --default-character-set=utf8mb4 -h $mysqlHost -u $mysqlUser -p$mysqlPassword -D $mysqlDatabase -e "SELECT id, related_id, file_name FROM attachments WHERE type = 'notice' LIMIT 8"
+} else {
+    Write-Host "SQL script execution failed, error code: $LASTEXITCODE"
+}
+
+# Clean up temporary file
+Remove-Item -Path $tempFile.FullName -Force

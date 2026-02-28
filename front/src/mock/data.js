@@ -1,0 +1,126 @@
+// 模拟考试数据
+export const mockExams = [
+  {
+    id: 1,
+    title: '习近平新时代中国特色社会主义思想学习测试',
+    type: 'exam',
+    category: 'theory',
+    description: '深入测试党员对习近平新时代中国特色社会主义思想核心内容、基本方略和实践要求的理解程度',
+    status: 'completed',
+    startTime: '2025-05-10 09:00:00',
+    endTime: '2025-05-17 17:00:00',
+    duration: 60,
+    totalQuestions: 50,
+    totalPoints: 100,
+    passScore: 60,
+    participantCount: 120,
+    passRate: 85.5,
+    creator: '管理员',
+    createTime: '2025-05-01 10:30:00',
+    questions: [
+      {
+        id: 1,
+        content: '习近平新时代中国特色社会主义思想的核心要义是（）',
+        type: 'single',
+        options: [
+          '坚持和发展中国特色社会主义',
+          '实现中华民族伟大复兴',
+          '全面建成小康社会',
+          '全面深化改革'
+        ],
+        answer: '坚持和发展中国特色社会主义',
+        score: 10
+      },
+      {
+        id: 2,
+        content: '“四个自信”包括（）',
+        type: 'multiple',
+        options: [
+          '道路自信',
+          '理论自信',
+          '制度自信',
+          '文化自信',
+          '科技自信'
+        ],
+        answer: ['道路自信', '理论自信', '制度自信', '文化自信'],
+        score: 15
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: '中国共产党章程知识测试',
+    type: 'exam',
+    category: 'party_rules',
+    description: '全面测试党员对2022年新修订的中国共产党章程的掌握程度，包括新增内容和修改部分',
+    status: 'ongoing',
+    startTime: '2025-05-20 09:00:00',
+    endTime: '2025-05-27 17:00:00',
+    duration: 90,
+    totalQuestions: 60,
+    totalPoints: 100,
+    passScore: 60,
+    participantCount: 85,
+    passRate: 0,
+    creator: '管理员',
+    createTime: '2025-05-15 14:20:00',
+    questions: []
+  },
+  {
+    id: 3,
+    title: '党的二十大精神学习测试',
+    type: 'exam',
+    category: 'theory',
+    description: '系统测试党员对党的二十大报告内容、重要决策部署和精神实质的学习理解效果',
+    status: 'pending',
+    startTime: '2025-06-01 09:00:00',
+    endTime: '2025-06-08 17:00:00',
+    duration: 120,
+    totalQuestions: 100,
+    totalPoints: 100,
+    passScore: 60,
+    participantCount: 0,
+    passRate: 0,
+    creator: '管理员',
+    createTime: '2025-05-25 09:15:00',
+    questions: []
+  },
+  {
+    id: 4,
+    title: '党史知识竞赛',
+    type: 'competition',
+    category: 'party_history',
+    description: '以竞赛形式测试党员对中国共产党百年奋斗历程、重要事件和历史经验的掌握程度',
+    status: 'draft',
+    startTime: '',
+    endTime: '',
+    duration: 90,
+    totalQuestions: 80,
+    totalPoints: 100,
+    passScore: 70,
+    participantCount: 0,
+    passRate: 0,
+    creator: '管理员',
+    createTime: '2025-05-30 16:45:00',
+    questions: []
+  },
+  {
+    id: 5,
+    title: '师德师风专项测试',
+    type: 'exam',
+    category: 'teacher_ethics',
+    description: '针对教师党员的师德师风规范知识专项测试，强化教师职业道德建设',
+    status: 'completed',
+    startTime: '2025-04-15 09:00:00',
+    endTime: '2025-04-22 17:00:00',
+    duration: 60,
+    totalQuestions: 40,
+    totalPoints: 100,
+    passScore: 80,
+    participantCount: 56,
+    passRate: 92.9,
+    creator: '管理员',
+    createTime: '2025-04-10 11:20:00',
+    questions: []
+  }
+]

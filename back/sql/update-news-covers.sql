@@ -1,0 +1,22 @@
+-- 更新新闻记录的cover字段为picsum.photos的图片URL
+UPDATE news SET cover = 'https://picsum.photos/id/10/600/400' WHERE id = 1;
+UPDATE news SET cover = 'https://picsum.photos/id/11/600/400' WHERE id = 2;
+UPDATE news SET cover = 'https://picsum.photos/id/12/600/400' WHERE id = 23;
+UPDATE news SET cover = 'https://picsum.photos/id/13/600/400' WHERE id = 24;
+UPDATE news SET cover = 'https://picsum.photos/id/14/600/400' WHERE id = 25;
+UPDATE news SET cover = 'https://picsum.photos/id/15/600/400' WHERE id = 26;
+UPDATE news SET cover = 'https://picsum.photos/id/16/600/400' WHERE id = 27;
+UPDATE news SET cover = 'https://picsum.photos/id/17/600/400' WHERE id = 29;
+UPDATE news SET cover = 'https://picsum.photos/id/18/600/400' WHERE id = 30;
+UPDATE news SET cover = 'https://picsum.photos/id/19/600/400' WHERE id = 31;
+UPDATE news SET cover = 'https://picsum.photos/id/20/600/400' WHERE id = 32;
+UPDATE news SET cover = 'https://picsum.photos/id/21/600/400' WHERE id = 33;
+UPDATE news SET cover = 'https://picsum.photos/id/22/600/400' WHERE id = 34;
+UPDATE news SET cover = 'https://picsum.photos/id/23/600/400' WHERE id = 35;
+UPDATE news SET cover = 'https://picsum.photos/id/24/600/400' WHERE id = 36;
+UPDATE news SET cover = 'https://picsum.photos/id/25/600/400' WHERE id = 37;
+UPDATE news SET cover = 'https://picsum.photos/id/26/600/400' WHERE id = 38;
+UPDATE news SET cover = 'https://picsum.photos/id/27/600/400' WHERE id = 39;
+UPDATE news SET cover = 'https://picsum.photos/id/28/600/400' WHERE id = 40;
+UPDATE news SET cover = 'https://picsum.photos/id/29/600/400' WHERE id = 41;
+UPDATE news SET cover = 'https://picsum.photos/id/30/600/400' WHERE id = 42;

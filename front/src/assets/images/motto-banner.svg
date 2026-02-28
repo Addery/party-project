@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300">
+  <!-- 背景渐变 -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8e5e5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0caca;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="circleGradient" cx="75%" cy="15%" r="40%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#ffe4c4;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#ffdab9;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#ffdab9;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="1200" height="300" fill="url(#bgGradient)" />
+  
+  <!-- 装饰圆形 -->
+  <circle cx="800" cy="60" r="200" fill="url(#circleGradient)" />
+  <circle cx="800" cy="60" r="150" fill="none" stroke="#ffefd5" stroke-width="2" opacity="0.3" />
+  <circle cx="800" cy="60" r="100" fill="none" stroke="#ffefd5" stroke-width="2" opacity="0.5" />
+  <circle cx="800" cy="60" r="50" fill="none" stroke="#ffefd5" stroke-width="2" opacity="0.7" />
+  
+  <!-- 中心大五角星 -->
+  <polygon points="800,25 820,65 860,70 830,100 840,140 800,120 760,140 770,100 740,70 780,65" fill="#ff4500" opacity="0.5" />
+  
+  <!-- 装饰光斑 -->
+  <circle cx="200" cy="50" r="3" fill="white" opacity="0.8" />
+  <circle cx="300" cy="30" r="2" fill="white" opacity="0.6" />
+  <circle cx="400" cy="60" r="2.5" fill="white" opacity="0.7" />
+  <circle cx="500" cy="40" r="2" fill="white" opacity="0.6" />
+  <circle cx="600" cy="70" r="3" fill="white" opacity="0.8" />
+  <circle cx="700" cy="50" r="2" fill="white" opacity="0.6" />
+  <circle cx="100" cy="100" r="2.5" fill="white" opacity="0.7" />
+  <circle cx="200" cy="120" r="2" fill="white" opacity="0.6" />
+  <circle cx="300" cy="90" r="3" fill="white" opacity="0.8" />
+  <circle cx="400" cy="110" r="2" fill="white" opacity="0.6" />
+  <circle cx="500" cy="80" r="2.5" fill="white" opacity="0.7" />
+  <circle cx="600" cy="100" r="2" fill="white" opacity="0.6" />
+  <circle cx="700" cy="120" r="3" fill="white" opacity="0.8" />
+  <circle cx="100" cy="200" r="2.5" fill="white" opacity="0.7" />
+  <circle cx="200" cy="180" r="2" fill="white" opacity="0.6" />
+  <circle cx="300" cy="210" r="3" fill="white" opacity="0.8" />
+  <circle cx="400" cy="190" r="2" fill="white" opacity="0.6" />
+  <circle cx="500" cy="220" r="2.5" fill="white" opacity="0.7" />
+  <circle cx="600" cy="200" r="2" fill="white" opacity="0.6" />
+  <circle cx="700" cy="230" r="3" fill="white" opacity="0.8" />
+  <circle cx="900" cy="150" r="2.5" fill="white" opacity="0.7" />
+  <circle cx="1000" cy="130" r="2" fill="white" opacity="0.6" />
+  <circle cx="1100" cy="160" r="3" fill="white" opacity="0.8" />
+  <circle cx="900" cy="250" r="2" fill="white" opacity="0.6" />
+  <circle cx="1000" cy="230" r="2.5" fill="white" opacity="0.7" />
+  <circle cx="1100" cy="260" r="2" fill="white" opacity="0.6" />
+  
+  <!-- 主标题文字 -->
+  <text x="50" y="45" font-family="'Microsoft YaHei', sans-serif" font-size="28" fill="#8b0000" font-weight="bold">不忘初心 牢记使命</text>
+  
+  <!-- 书法风格文字 -->
+  <text x="80" y="140" font-family="'Microsoft YaHei', sans-serif" font-size="80" fill="#8b0000" font-weight="bold">牢记使命</text>
+  <text x="280" y="240" font-family="'Microsoft YaHei', sans-serif" font-size="80" fill="#8b0000" font-weight="bold">不忘初心</text>
+  
+  <!-- 底部小字 -->
+  <text x="430" y="280" font-family="'Microsoft YaHei', sans-serif" font-size="18" fill="#8b0000">不忘初心 牢记使命</text>
+  
+  <!-- 右上角装饰文字 -->
+  <text x="1150" y="20" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#8b0000" writing-mode="tb" text-orientation="upright">牢记使命</text>
+  <text x="1170" y="20" font-family="'Microsoft YaHei', sans-serif" font-size="12" fill="#8b0000" writing-mode="tb" text-orientation="upright">不忘初心</text>
+</svg>

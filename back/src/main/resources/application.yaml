@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: back
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/party_management_system?useUnicode=true&characterEncoding=UTF-8&characterSetResults=utf8mb4&connectionCollation=utf8mb4_unicode_ci&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false
+    username: root
+    password: 123456
+  # JPA配置
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+# application.properties
+ark:
+  api:
+    key: 2f97131a-ebad-4bf1-9b57-40e0c1da7472
+  base:
+    url: https://ark.cn-beijing.volces.com/api/v3
+  model:
+    id: doubao-seed-1-6-251015
+logging:
+  file:
+    path: logs
+  level:
+    root: DEBUG
+    org.springframework.orm.jpa: DEBUG
+    org.hibernate: DEBUG
+
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+      force-request: true
+      force-response: true
+
+# JWT配置
+jwt:
+  secret: addery-party-project-secret-key-2024
+  expiration: 3600000  # 1小时，单位毫秒
+  tokenPrefix: Bearer
